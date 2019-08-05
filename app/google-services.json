@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "811140552944",
+    "firebase_url": "https://firemessager-907a9.firebaseio.com",
+    "project_id": "firemessager-907a9",
+    "storage_bucket": "firemessager-907a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:811140552944:android:5f4e6b1f89c7ffb8",
+        "android_client_info": {
+          "package_name": "com.vero.firemessager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "811140552944-eancdps2j35jd4h97s6gloduu5sflt7i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDVrcInc4-sPma3AbKtYq25UxQT1JK-Vc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "811140552944-eancdps2j35jd4h97s6gloduu5sflt7i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
