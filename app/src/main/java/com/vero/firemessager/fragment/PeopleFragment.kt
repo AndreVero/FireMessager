@@ -8,14 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.ListenerRegistration
+import com.vero.firemessager.AppConstants
+import com.vero.firemessager.ChatActivity
 
 import com.vero.firemessager.R
+import com.vero.firemessager.recyclerview.item.PersonItem
 import com.vero.firemessager.util.FirestoreUtil
 import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.OnItemClickListener
 import com.xwray.groupie.Section
 import com.xwray.groupie.ViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.fragment_people.*
+import org.jetbrains.anko.support.v4.startActivity
 
 class PeopleFragment : Fragment() {
 
@@ -48,14 +53,14 @@ class PeopleFragment : Fragment() {
                 adapter = GroupAdapter<ViewHolder>().apply {
                     peopleSection = Section(items)
                     add(peopleSection)
+                    setOnItemClickListener(onItemClick)
                 }
             }
             shouldInitRecyclerView = false
         }
 
-        fun updateItems() {
+        fun updateItems() = peopleSection.update(items)
 
-        }
 
         if(shouldInitRecyclerView) {
             init()
@@ -64,5 +69,13 @@ class PeopleFragment : Fragment() {
         }
     }
 
+    private val onItemClick = OnItemClickListener{ item, view ->
+        if (item is PersonItem) {
+            startActivity<ChatActivity>(
+                AppConstants.USER_NAME to item.person.name,
+                AppConstants.USER_ID to item.userId
+            )
+        }
+    }
 
 }
