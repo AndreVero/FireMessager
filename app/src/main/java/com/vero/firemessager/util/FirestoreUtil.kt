@@ -6,10 +6,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
-import com.vero.firemessager.model.ChatChannel
-import com.vero.firemessager.model.MessageType
-import com.vero.firemessager.model.TextMessage
-import com.vero.firemessager.model.User
+import com.vero.firemessager.model.*
 import com.vero.firemessager.recyclerview.item.PersonItem
 import com.vero.firemessager.recyclerview.item.TextMessageItem
 import com.xwray.groupie.kotlinandroidextensions.Item
@@ -122,5 +119,11 @@ object FirestoreUtil {
                 }
                 onListen(items)
             }
+    }
+
+    fun sendMessage(message: Message, channelId: String) {
+        chatChannelsCollectionRef.document(channelId)
+            .collection("messages")
+            .add(message)
     }
 }
