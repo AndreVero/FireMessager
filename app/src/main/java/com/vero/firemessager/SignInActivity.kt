@@ -8,6 +8,8 @@ import android.view.View
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.ErrorCodes
 import com.firebase.ui.auth.IdpResponse
+import com.google.firebase.iid.FirebaseInstanceId
+import com.vero.firemessager.service.MyFirebaseInstanceIDService
 import com.vero.firemessager.util.FirestoreUtil
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import org.jetbrains.anko.clearTask
@@ -48,6 +50,10 @@ class SignInActivity : AppCompatActivity() {
                 test_progres.visibility = View.VISIBLE
                 FirestoreUtil.initCurrentUserIfFirstTime {
                     startActivity(intentFor<MainActivity>().newTask().clearTask())
+
+                    val registrationToken = FirebaseInstanceId.getInstance().token
+                    MyFirebaseInstanceIDService.addTokenForFirestore(registrationToken)
+
                     test_progres.visibility = View.GONE
                 }
             }
