@@ -77,6 +77,8 @@ object FirestoreUtil {
         currentUserDocRef.collection("engagedChatChannels")
             .document(otherUserId).get().addOnSuccessListener {
                 if (it.exists()) {
+                    //it.data()
+                    System.out.println(it.data?.get("channelId").toString())
                     onComplete(it["channelId"].toString())
                     return@addOnSuccessListener
                 }
@@ -89,13 +91,14 @@ object FirestoreUtil {
                 currentUserDocRef
                     .collection("engagedChatChannels")
                     .document(otherUserId)
-                    .set(mapOf("channelId" to newChannel))
+                    .set(mapOf("channelId" to newChannel.id))
 
                 firestoreInstance.collection("users").document(otherUserId)
                     .collection("engagedChatChannels")
-                    .document()
+                    .document(currentUserId)
                     .set(mapOf("channelId" to newChannel.id))
 
+                System.out.println("new Channel")
                 onComplete(newChannel.id)
             }
     }

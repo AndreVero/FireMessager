@@ -14,7 +14,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         replaceFragment(PeopleFragment())
-        navigation.setOnNavigationItemReselectedListener {
+
+        navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_people -> {
                     replaceFragment(PeopleFragment())
@@ -30,8 +31,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().
-            replace(R.id.fragment_layout, fragment)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_layout, fragment)
             .commit()
     }
 }

@@ -47,14 +47,11 @@ class SignInActivity : AppCompatActivity() {
             val response = IdpResponse.fromResultIntent(data)
 
             if (resultCode == Activity.RESULT_OK) {
-                test_progres.visibility = View.VISIBLE
                 FirestoreUtil.initCurrentUserIfFirstTime {
                     startActivity(intentFor<MainActivity>().newTask().clearTask())
 
                     val registrationToken = FirebaseInstanceId.getInstance().token
                     MyFirebaseInstanceIDService.addTokenForFirestore(registrationToken)
-
-                    test_progres.visibility = View.GONE
                 }
             }
             else if (resultCode == Activity.RESULT_CANCELED) {

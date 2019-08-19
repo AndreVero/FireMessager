@@ -8,9 +8,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage : RemoteMessage?) {
         if (remoteMessage?.notification != null) {
-            //TODO show notification
-
-            Log.d("FCM", "FCM message received")
+            //TODO show notification if we're not online
+            Log.d("FCM", remoteMessage.data.toString())
         }
     }
 }

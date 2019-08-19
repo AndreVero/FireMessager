@@ -1,7 +1,6 @@
 package com.vero.firemessager.service
 
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.vero.firemessager.util.FirestoreUtil
 import java.lang.NullPointerException
